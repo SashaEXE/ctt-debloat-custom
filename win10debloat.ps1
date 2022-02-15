@@ -835,7 +835,7 @@ $putty.Add_Click({
     Write-Host "Installing PuTTY & WinSCP"
     $ResultText.text = "`r`n" +"`r`n" + "Installing PuTTY & WinSCP... Please Wait" 
     winget install -e PuTTY.PuTTY | Out-Host
-    winget install -e WinSCP.WinSCP | Out-Host
+    winget install -e WinSCP | Out-Host
     Write-Host "Installed PuTTY & WinSCP"
     $ResultText.text = "`r`n" + "Finished Installing PuTTY & WinSCP" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
