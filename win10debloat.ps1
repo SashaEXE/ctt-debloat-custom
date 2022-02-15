@@ -1053,7 +1053,7 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies
     Write-Host "Showing known file extensions..."
     Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
 
-    # Service tweaks to Manual 
+    # Service tweaks to Manual ;DISABLE BY SASHAEXE
 
     $services = @(
     "diagnosticshub.standardcollector.service"     # Microsoft (R) Diagnostics Hub Standard Collector Service
@@ -1139,7 +1139,8 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies
     "vmicheartbeat"
     "vmicvmsession"
     "vmicrdv"
-    "vmictimesync" 
+    "vmictimesync"
+    "wsearch" ;added by SashaEXE
     # Services which cannot be disabled
     #"WdNisSvc"
 )
@@ -1147,8 +1148,8 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies
 foreach ($service in $services) {
     # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
 
-    Write-Host "Setting $service StartupType to Manual"
-    Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
+    Write-Host "Setting $service StartupType to Disabled"
+    Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled
 }
 
     Write-Host "Essential Tweaks Completed - Please Reboot"
